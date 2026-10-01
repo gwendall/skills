@@ -1,0 +1,16 @@
+{
+  "name": "gwendall",
+  "owner": {
+    "name": "Gwendall Esnault"
+  },
+  "description": "My reusable agent skills, grouped by category - installable as a Claude Code plugin or individually in Codex.",
+  "plugins": [
+    {
+      "name": "gwendall-skills",
+      "source": "./",
+      "description": "Reusable skills for engineering, workstation upkeep, on-chain analysis, city events and writing.",
+      "category": "productivity",
+      "keywords": ["skills", "agents", "engineering", "monorepo", "ci", "eas", "macos", "crypto", "events", "writing"]
+    }
+  ]
+}

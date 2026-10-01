@@ -1,0 +1,5 @@
+# Dependencies for asc-api.py (App Store Connect client).
+# Install into a venv:  python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+pyjwt>=2.8
+cryptography>=42.0
+requests>=2.31

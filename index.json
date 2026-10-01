@@ -1,0 +1,372 @@
+{
+  "generated": "2026-10-01T15:10:15",
+  "baseUrl": "https://raw.githubusercontent.com/gwendall/skills/main",
+  "count": 9,
+  "skills": [
+    {
+      "name": "wallet-analysis",
+      "category": "crypto",
+      "description": "On-chain relationship analysis of an EVM address (Ethereum & L2). Finds who funded a wallet, all EOA counterparties (vs contracts), filters out spam, and traces the origin chain of funds back to exchanges. No API key. Triggers on \"analyze this wallet\", \"where does this address come from\", \"who funded this wallet\", \"find the linked wallets\", \"who is this wallet connected to\".",
+      "version": "1.0.0",
+      "updated": "2026-06-22",
+      "compatibility": "Requires curl + python3, network access. No API key. Works in Claude Code and any agent with Bash.",
+      "requires": {
+        "bins": [
+          "curl",
+          "python3"
+        ]
+      },
+      "emoji": "mag",
+      "files": [
+        {
+          "path": "skills/crypto/wallet-analysis/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/crypto/wallet-analysis/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/crypto/wallet-analysis/references/known-addresses.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/crypto/wallet-analysis/references/known-addresses.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/crypto/wallet-analysis/scripts/analyze_wallet.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/crypto/wallet-analysis/scripts/analyze_wallet.py",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "ci-cost-monorepo",
+      "category": "engineering",
+      "description": "Diagnose and cut a runaway GitHub Actions bill in a monorepo. Measures where the money actually goes (billable minutes per workflow, per job, per step), then applies the fixes that matter - scoping installs with `--filter`, collapsing wide matrices of fast tests, killing per-job setup overhead. Use when CI costs seem too high, when a spending limit blocks all workflows, when someone asks \"what is consuming our Actions minutes\", or before adding another job to a matrix. Triggers on \"GitHub Actions bill\", \"CI costs too much\", \"Actions budget exceeded\", \"spending limit reached\", \"why is CI so slow\", \"CI takes forever\", \"reduce CI minutes\", \"Actions minutes\".",
+      "version": "1.0.0",
+      "updated": null,
+      "compatibility": "Requires `gh` (authenticated, repo read access) and node for the analysis scripts. The fixes assume a pnpm/npm/yarn workspace monorepo on GitHub-hosted Linux runners. No write access needed to diagnose.",
+      "requires": {
+        "bins": [
+          "gh",
+          "node"
+        ]
+      },
+      "emoji": "money_with_wings",
+      "files": [
+        {
+          "path": "skills/engineering/ci-cost-monorepo/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/ci-cost-monorepo/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/engineering/ci-cost-monorepo/scripts/analyze-actions-cost.sh",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/ci-cost-monorepo/scripts/analyze-actions-cost.sh",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "eas-monorepo-release",
+      "category": "engineering",
+      "description": "Runbook for building and shipping an Expo app from a large monorepo to TestFlight/App Store with EAS. Use when `eas build`/`eas submit` fails (archive > 2 GB, XCODE_BUILD_ERROR AnyMap/nitro, alpha-channel icon), or when a TestFlight build doesn't show up for a tester. Covers the oversized-archive workaround, native version pins, and TestFlight management via the App Store Connect API. Triggers on \"eas build fails\", \"archive too big\", \"AnyMap getBigInt\", \"App Store icon rejected\", \"nothing in TestFlight\", \"TestFlight invitation revoked\", \"ship to TestFlight\".",
+      "version": "1.2.0",
+      "updated": null,
+      "compatibility": "Requires eas-cli, git, python3 + a venv (pyjwt cryptography requests) for the App Store Connect client. The ASC API key (Admin, account-level) is expected under ~/.config/appstoreconnect/ (config.json + .p8). macOS (sips/PIL for the icon fix).",
+      "requires": {
+        "bins": [
+          "eas",
+          "git",
+          "python3"
+        ]
+      },
+      "emoji": "rocket",
+      "files": [
+        {
+          "path": "skills/engineering/eas-monorepo-release/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/eas-monorepo-release/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/engineering/eas-monorepo-release/scripts/asc-api.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/eas-monorepo-release/scripts/asc-api.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/engineering/eas-monorepo-release/scripts/eas-build-clean.sh",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/eas-monorepo-release/scripts/eas-build-clean.sh",
+          "role": "script"
+        },
+        {
+          "path": "skills/engineering/eas-monorepo-release/scripts/requirements.txt",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/eas-monorepo-release/scripts/requirements.txt",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "multi-agent-repo",
+      "category": "engineering",
+      "description": "Audit and bootstrap a repository for many concurrent coding agents without merge races, repeated qualification, or runaway CI. Use when agents share a repository through worktrees, when parallel PRs keep invalidating each other, when setting up a new project for agent teams, or when designing immutable qualification and a serialized merge lane. Not for ordinary single-agent feature work or CI cost diagnosis alone.",
+      "version": "1.0.0",
+      "updated": "2026-08-27",
+      "compatibility": "",
+      "requires": {
+        "bins": [
+          "git",
+          "bash"
+        ]
+      },
+      "emoji": "traffic_light",
+      "files": [
+        {
+          "path": "skills/engineering/multi-agent-repo/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/references/agents-contract.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/references/agents-contract.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/references/control-model.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/references/control-model.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/references/github-rollout.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/references/github-rollout.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/scripts/agent-preflight.sh",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/scripts/agent-preflight.sh",
+          "role": "script"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/scripts/audit-repo.sh",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/scripts/audit-repo.sh",
+          "role": "script"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/scripts/create-agent-worktree.sh",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/scripts/create-agent-worktree.sh",
+          "role": "script"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/scripts/lib/repo.sh",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/scripts/lib/repo.sh",
+          "role": "script"
+        },
+        {
+          "path": "skills/engineering/multi-agent-repo/scripts/qualification-context.sh",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/scripts/qualification-context.sh",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "city-events",
+      "category": "lifestyle",
+      "description": "Help someone live a richer life by finding them the best events tuned to their taste for art + tech + culture + gaming + food, from the well-known to the niche/cool/VIP. Three horizons, no API key needed - (1) THIS week's events in Paris via Luma, Resident Advisor, Shotgun, Dice, galleries (slash-paris, Palais de Tokyo), IRL gaming (AFJV, Game Dev IDF, Unreal, start.gg), Eventbrite, film clubs and the official agenda (Que Faire à Paris); (2) the upcoming months' TENTPOLES (Art Basel, Frieze, Gamescom, GDC, VivaTech, Paris Games Week...) in Paris or worth-travel; (3) EXTRAS (new restaurants from Le Fooding, weekly cinema releases from AlloCiné, weekend getaways via TGVmax €0). Dedupes, scores by taste, returns a shortlist with a \"why you\" line, and can place 'option' holds in the calendar (ICS). Starts with Paris (other cities are extensible). Triggers on \"the best events this week\", \"what to do in Paris\", \"find me cool outings/parties\", \"tech/art/culture/gaming/food events\", \"what to do this weekend\", \"gallery openings/exhibitions\", \"upcoming fairs/confs/festivals\", \"Art Basel/Frieze/Gamescom\", \"new restaurants\", \"weekend getaway\", \"what's on this week\", \"find cool events\".",
+      "version": "1.0.0",
+      "updated": "2026-06-24",
+      "compatibility": "Requires python3 (stdlib only, no dependencies) + network access. No API key (except start.gg, optional via the free $STARTGG_TOKEN). Works in Claude Code and any agent with Bash. Sources verified for Paris; the engine is reusable for other cities.",
+      "requires": {
+        "bins": [
+          "python3"
+        ]
+      },
+      "emoji": "calendar",
+      "files": [
+        {
+          "path": "skills/lifestyle/city-events/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/lifestyle/city-events/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/lifestyle/city-events/references/sources-paris.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/lifestyle/city-events/references/sources-paris.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/lifestyle/city-events/scripts/extras.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/lifestyle/city-events/scripts/extras.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/lifestyle/city-events/scripts/fetch_events.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/lifestyle/city-events/scripts/fetch_events.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/lifestyle/city-events/scripts/render_html.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/lifestyle/city-events/scripts/render_html.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/lifestyle/city-events/scripts/tentpoles.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/lifestyle/city-events/scripts/tentpoles.py",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "claude-token-spend",
+      "category": "workstation",
+      "description": "Report Claude Code token consumption from local session logs - per model, per project, and per token type (input, output, cache read, cache write) over 24h / 7d / 30d / all-time windows. Reads ~/.claude/projects directly, no API key, read-only. Triggers on \"my token spend\", \"token consumption\", \"how many tokens did I use\", \"usage per model\", \"which project burns the most tokens\", \"ccdash-style report\".",
+      "version": "1.0.0",
+      "updated": "2026-08-24",
+      "compatibility": "Requires python3 (stdlib only) and local Claude Code logs in ~/.claude/projects. Read-only. Works in Claude Code and any agent with Bash.",
+      "requires": {
+        "bins": [
+          "python3"
+        ]
+      },
+      "emoji": "abacus",
+      "files": [
+        {
+          "path": "skills/workstation/claude-token-spend/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/claude-token-spend/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/workstation/claude-token-spend/scripts/token_spend.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/claude-token-spend/scripts/token_spend.py",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "safe-disk-cleanup",
+      "category": "workstation",
+      "description": "Safely diagnose and reclaim disk space on developer machines with explainable deletion decisions, deep read-only inventory, worktree and Docker auditing, active-tool guards, and file-level dry-runs. Use when a disk is full, storage is low, developer resources are large, or the user asks what can be deleted. Cleanup requires a reviewed plan and fresh approval.",
+      "version": "1.3.0",
+      "updated": "2026-09-08",
+      "compatibility": "",
+      "requires": {
+        "bins": [
+          "python3"
+        ]
+      },
+      "emoji": "broom",
+      "files": [
+        {
+          "path": "skills/workstation/safe-disk-cleanup/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/references/decision-rules.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/references/decision-rules.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/references/macos-developer-storage.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/references/macos-developer-storage.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/scripts/cleanup.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/scripts/cleanup.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/scripts/deep_inventory.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/scripts/deep_inventory.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/scripts/docker_audit.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/scripts/docker_audit.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/scripts/inventory.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/scripts/inventory.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/scripts/pnpm_audit.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/scripts/pnpm_audit.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/scripts/simulator_audit.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/scripts/simulator_audit.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/workstation/safe-disk-cleanup/scripts/worktree_audit.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-disk-cleanup/scripts/worktree_audit.py",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "safe-memory-manager",
+      "category": "workstation",
+      "description": "Safely diagnose RAM pressure on developer Macs running many terminals, cmux sessions, Node processes, browsers, simulators, or Docker. Use when the Mac is slow, swapping, memory pressure is elevated, processes may be stale, or the user asks what could be stopped. The bundled CLI is read-only and never signals a process.",
+      "version": "1.0.0",
+      "updated": "2026-09-07",
+      "compatibility": "",
+      "requires": {
+        "bins": [
+          "python3"
+        ]
+      },
+      "emoji": "brain",
+      "files": [
+        {
+          "path": "skills/workstation/safe-memory-manager/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-memory-manager/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/workstation/safe-memory-manager/references/macos-memory-research.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-memory-manager/references/macos-memory-research.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/workstation/safe-memory-manager/scripts/memory_manager.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/safe-memory-manager/scripts/memory_manager.py",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "joke-writing",
+      "category": "writing",
+      "description": "Write REAL, funny jokes (not the default mushy LLM humor), with optional context (topic, audience, persona) and a chosen register (dark, brit, crude, cringe, situational/sniper, cutting, political, mocking/roast, absurd, deadpan, post-ironic). Breaks down a joke's mechanics, generates lots of angles then culls savagely. Triggers on \"write a joke\", \"make a joke\", \"find something funny\", \"make this funny\", \"do a roast\", \"a punchline about\", \"dark/brit/cringe/political humor\", \"roast this\", \"be funny about\".",
+      "version": "1.0.0",
+      "updated": "2026-06-23",
+      "compatibility": "No dependencies, no API key, no required tools. Works in Claude Code and any agent. Network is only useful to check a topical reference (optional).",
+      "requires": null,
+      "emoji": "clown_face",
+      "files": [
+        {
+          "path": "skills/writing/joke-writing/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/writing/joke-writing/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/writing/joke-writing/references/comedy-kb.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/writing/joke-writing/references/comedy-kb.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/writing/joke-writing/references/conversational.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/writing/joke-writing/references/conversational.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/writing/joke-writing/references/registers.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/writing/joke-writing/references/registers.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/writing/joke-writing/references/routine.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/writing/joke-writing/references/routine.md",
+          "role": "reference"
+        }
+      ]
+    }
+  ]
+}
