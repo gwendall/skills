@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-01T15:10:15",
+  "generated": "2026-10-12T10:38:39",
   "baseUrl": "https://raw.githubusercontent.com/gwendall/skills/main",
-  "count": 9,
+  "count": 10,
   "skills": [
     {
       "name": "wallet-analysis",
@@ -158,6 +158,47 @@
         {
           "path": "skills/engineering/multi-agent-repo/scripts/qualification-context.sh",
           "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/multi-agent-repo/scripts/qualification-context.sh",
+          "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "og-images",
+      "category": "engineering",
+      "description": "Design, build and verify Open Graph / Twitter card images and shareable result cards that read well as a phone thumbnail and unfurl everywhere (X, iMessage, WhatsApp, Telegram, Slack, Discord, LinkedIn, Facebook, Bluesky). Covers composition (big type, few words, a real image, safe zones, the square crop), Next.js `opengraph-image.tsx` / `twitter-image.tsx` / `ImageResponse` (Satori) and every pitfall that breaks them, fonts, byte budgets, crawler access, caching, the Web Share button, and a verification checklist with scripts. Use whenever you create or change an OG image, a social card, a share image, link previews or metadata images. Triggers on \"OG image\", \"opengraph-image\", \"twitter-image\", \"og:image\", \"social card\", \"share card\", \"link preview\", \"unfurl\", \"ImageResponse\", \"next/og\", \"Satori\", \"partager l'image\", \"aperçu du lien\".",
+      "version": "1.0.0",
+      "updated": null,
+      "compatibility": "The design and verification parts apply to any stack. The implementation part targets Next.js App Router 14-16 with `next/og`. Scripts need python3 (stdlib only for check-og.py, Pillow for thumb-sheet.py) and network access.",
+      "requires": {
+        "bins": [
+          "python3"
+        ]
+      },
+      "emoji": "framed_picture",
+      "files": [
+        {
+          "path": "skills/engineering/og-images/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/og-images/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/engineering/og-images/references/platform-specs.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/og-images/references/platform-specs.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/engineering/og-images/references/satori-recipes.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/og-images/references/satori-recipes.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/engineering/og-images/scripts/check-og.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/og-images/scripts/check-og.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/engineering/og-images/scripts/thumb-sheet.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/engineering/og-images/scripts/thumb-sheet.py",
           "role": "script"
         }
       ]

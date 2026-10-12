@@ -11,6 +11,7 @@ My agent skills for Claude Code, Codex and compatible runtimes, grouped by categ
 | [multi-agent-repo](skills/engineering/multi-agent-repo) | Audit or bootstrap a repo so many coding agents can work on it at the same time without stepping on each other. |
 | [ci-cost-monorepo](skills/engineering/ci-cost-monorepo) | Diagnose and cut a runaway GitHub Actions bill in a monorepo. |
 | [eas-monorepo-release](skills/engineering/eas-monorepo-release) | Ship an Expo app from a monorepo to TestFlight and the App Store with EAS, step by step. |
+| [og-images](skills/engineering/og-images) | Design, build and verify OG / share card images that read as a phone thumbnail and unfurl on every platform (Next.js `next/og`). |
 
 ### Workstation
 
@@ -88,7 +89,8 @@ Idempotent; re-run it after a `git pull`. Skills are flattened by name, so skill
 │   ├── engineering/
 │   │   ├── multi-agent-repo/
 │   │   ├── ci-cost-monorepo/
-│   │   └── eas-monorepo-release/
+│   │   ├── eas-monorepo-release/
+│   │   └── og-images/
 │   ├── workstation/
 │   │   ├── safe-disk-cleanup/
 │   │   ├── safe-memory-manager/
