@@ -45,7 +45,7 @@ Community tech (outside Luma):
 Seasonal (left active, empty out of season):
 - **AI Engineer Paris (side events)** `ai_engineer`, `cal-U6ogeqZ4xvrThp6`. Annual conf (~Sept @ Station F). The side-events calendar fills up as it approaches (vLLM/Mistral/Neo4j meetups). **Re-poll in September.**
 - **VivaTech (side events)** `vivatech`, `cal-MHbFyEBUOYhAcFC`. Window ~mid-June only. During the edition, use `period=past` (the `future` empties out). Filter Paris (Berlin/Milan satellites).
-- **Paris Blockchain Week** `pbw`, `cal-qa6Y6Yw2zOujPwF`. VIP crypto goldmine, ~April. Dormant the rest of the year.
+- **Paris Blockchain Week** `pbw`, `cal-qa6Y6Yw2zOujPwF`. Industry week with many side events, ~April. Dormant the rest of the year.
 
 ## 3. Art / Galleries / Museums
 
@@ -58,7 +58,7 @@ Not scripted (low volume, fragile scrape; pull via WebFetch case by case):
 - **Lafayette Anticipations** `lafayetteanticipations.com/fr/agenda` [cool]. Sharp contemporary art foundation (performances, experimental music, talks), single venue (9 rue du Plâtre, Marais). Scrape: `div.c-events-group` (one per day) > `h2.ft_h4` (date label "jeudi 25 juin 2026"), `div.c-block-event` > `h3.ft_h3` (title) + `a[href^="/fr/manifestation/"]`. Date filterable client-side (parse the day headers). ~5 events/week, high quality.
 - Bourse de Commerce (Pinault), Fondation Cartier, Jeu de Paume, Lafayette: most expose JSON-LD `Event`/`ExhibitionEvent` -> try the generic JSON-LD fallback (see SKILL.md).
 
-> The "gallery openings + digital art + VIP crypto-art" layer: partially covered by `luma_paris` (which mixes openings, magazine launches, PFW parties, creative film clubs) and by `slash_paris`. The dedicated art-crypto Luma calendars (NFT Paris, Bright Moments, fxhash) are **dormant/off-season** (see discarded). For institutional art, `que-faire-paris` filtered on `qfap_tags` containing "Expo"/"Art contemporain".
+> The "gallery openings + digital art" layer: partially covered by `luma_paris` (which mixes openings, magazine launches, PFW parties, creative film clubs) and by `slash_paris`. The dedicated art-crypto Luma calendars (NFT Paris, Bright Moments, fxhash) are **dormant/off-season** (see discarded). For institutional art, `que-faire-paris` filtered on `qfap_tags` containing "Expo"/"Art contemporain".
 
 ## 4. Culture / Official (mainstream base)
 
@@ -152,7 +152,7 @@ Big dates set months in advance, in Paris or worth-travel. Most have a **near-fi
 | Source | Window | Note |
 |---|---|---|
 | VivaTech side events | ~mid-June | `period=past` during the edition |
-| Paris Blockchain Week | ~April | VIP crypto goldmine |
+| Paris Blockchain Week | ~April | Industry week, many side events |
 | NFT Paris (side events) | ~January/February | revisit ~December |
 | AI Engineer Paris side events | ~September | fills up in August, dormant in summer |
 | Paris Design Week / D'Days | ~September | art/design |

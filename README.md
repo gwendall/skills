@@ -21,12 +21,6 @@ My agent skills for Claude Code, Codex and compatible runtimes, grouped by categ
 | [safe-memory-manager](skills/workstation/safe-memory-manager) | Diagnose RAM pressure on a dev Mac and find what can safely be stopped. |
 | [claude-token-spend](skills/workstation/claude-token-spend) | Report Claude Code token consumption from your local session logs. |
 
-### Crypto
-
-| Skill | What it does |
-| --- | --- |
-| [wallet-analysis](skills/crypto/wallet-analysis) | Map the relationships of an EVM address: who funded it, who it transacts with, and which exchange the money came from. No API key. |
-
 ### Lifestyle
 
 | Skill | What it does |
@@ -95,8 +89,6 @@ Idempotent; re-run it after a `git pull`. Skills are flattened by name, so skill
 │   │   ├── safe-disk-cleanup/
 │   │   ├── safe-memory-manager/
 │   │   └── claude-token-spend/
-│   ├── crypto/
-│   │   └── wallet-analysis/
 │   ├── lifestyle/
 │   │   └── city-events/
 │   └── writing/

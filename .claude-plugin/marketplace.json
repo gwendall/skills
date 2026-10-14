@@ -8,9 +8,9 @@
     {
       "name": "gwendall-skills",
       "source": "./",
-      "description": "Reusable skills for engineering, workstation upkeep, on-chain analysis, city events and writing.",
+      "description": "Reusable skills for engineering, workstation upkeep, city events and writing.",
       "category": "productivity",
-      "keywords": ["skills", "agents", "engineering", "monorepo", "ci", "eas", "macos", "crypto", "events", "writing"]
+      "keywords": ["skills", "agents", "engineering", "monorepo", "ci", "eas", "macos", "events", "writing"]
     }
   ]
 }

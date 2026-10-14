@@ -1,40 +1,8 @@
 {
-  "generated": "2026-10-12T10:38:39",
+  "generated": "2026-10-14T16:05:02",
   "baseUrl": "https://raw.githubusercontent.com/gwendall/skills/main",
-  "count": 10,
+  "count": 9,
   "skills": [
-    {
-      "name": "wallet-analysis",
-      "category": "crypto",
-      "description": "On-chain relationship analysis of an EVM address (Ethereum & L2). Finds who funded a wallet, all EOA counterparties (vs contracts), filters out spam, and traces the origin chain of funds back to exchanges. No API key. Triggers on \"analyze this wallet\", \"where does this address come from\", \"who funded this wallet\", \"find the linked wallets\", \"who is this wallet connected to\".",
-      "version": "1.0.0",
-      "updated": "2026-06-22",
-      "compatibility": "Requires curl + python3, network access. No API key. Works in Claude Code and any agent with Bash.",
-      "requires": {
-        "bins": [
-          "curl",
-          "python3"
-        ]
-      },
-      "emoji": "mag",
-      "files": [
-        {
-          "path": "skills/crypto/wallet-analysis/SKILL.md",
-          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/crypto/wallet-analysis/SKILL.md",
-          "role": "skill"
-        },
-        {
-          "path": "skills/crypto/wallet-analysis/references/known-addresses.md",
-          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/crypto/wallet-analysis/references/known-addresses.md",
-          "role": "reference"
-        },
-        {
-          "path": "skills/crypto/wallet-analysis/scripts/analyze_wallet.py",
-          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/crypto/wallet-analysis/scripts/analyze_wallet.py",
-          "role": "script"
-        }
-      ]
-    },
     {
       "name": "ci-cost-monorepo",
       "category": "engineering",
