@@ -72,6 +72,7 @@ Route segment config (`runtime`, `dynamic`, `revalidate`) is read statically: **
 `next/og` vendors its own Satori (Next 16.2 ships `@vercel/og` 0.11 with Satori 0.25 on Yoga). The Satori README on GitHub describes a newer version (grid, block layout); **trust only what the vendored version does.**
 
 - **Flexbox only.** Every element with more than one child needs `display: 'flex'`. No `grid`, no `float`, no `position: sticky`, no animations. `position: absolute` inside a `position: relative` parent works and is how badges and overlaps are placed.
+- **No `inset` shorthand.** `inset: 0` is silently ignored: the absolute layer renders at zero size, with no error. Write `top`, `left` and an explicit `width`/`height` (or `right`/`bottom`). Seen on world.kami.bot, 2026-10-13: a darkening gradient that never existed, so the tagline ran over the photo.
 - **An `undefined` style value throws** (`Cannot read properties of undefined (reading 'toString')`). Never write `textShadow: cond ? x : undefined`; spread conditionally: `...(cond ? { textShadow: x } : {})`.
 - **Mixed text nodes split.** `{pct}% match` is three children: wrapping and spacing go wrong. Build one string: `` {`${pct}% match`} ``.
 - **Missing glyphs.** Every character must exist in a font you passed; curly quotes, accents in a pixel font, emoji and symbols fall back to tofu or trigger a runtime font fetch. Normalise text before drawing.
