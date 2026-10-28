@@ -18,7 +18,7 @@ code_dirs() {
   if [ -n "${CODE_DIRS:-}" ]; then
     for d in $CODE_DIRS; do echo "${d/#\~/$HOME}"; done
   else
-    for d in code Code src dev Developer projects work repos git; do
+    for d in code Code src dev Developer project projects work repo repos git; do
       [ -d "$HOME/$d" ] && echo "$HOME/$d"
     done
   fi

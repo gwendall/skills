@@ -25,7 +25,7 @@ scripts/mac-for-agents.sh compare
 ```
 
 Code folders default to the usual names under `$HOME` (code, Code, src, dev, Developer,
-projects, work, repos, git). Set `CODE_DIRS="~/a ~/b"` to choose. `measure` writes
+project, projects, work, repo, repos, git). Set `CODE_DIRS="~/a ~/b"` to choose. `measure` writes
 `<label>.csv` in the current folder, one row every 10 s.
 
 ## How to read it
