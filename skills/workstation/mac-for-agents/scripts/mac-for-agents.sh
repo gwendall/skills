@@ -14,15 +14,26 @@ set -u
 
 HEADER="label,epoch,load1,mds_cpu,mds_mb,fseventsd_cpu,fseventsd_mb,mdworkers,agents_cli"
 
+# Each folder once: on a case-insensitive disk (the macOS default) ~/code and ~/Code are one folder.
 code_dirs() {
+  local seen=" " d
   if [ -n "${CODE_DIRS:-}" ]; then
-    for d in $CODE_DIRS; do echo "${d/#\~/$HOME}"; done
+    for d in $CODE_DIRS; do once "${d/#\~/$HOME}"; done
   else
     for d in code Code src dev Developer project projects work repo repos git; do
-      [ -d "$HOME/$d" ] && echo "$HOME/$d"
+      [ -d "$HOME/$d" ] && once "$HOME/$d"
     done
   fi
   return 0
+}
+
+# Prints $1 unless a folder with the same inode was printed (seen is code_dirs' local).
+once() {
+  local id
+  id=$(stat -f %i "$1" 2>/dev/null || echo "$1")
+  case "$seen" in *" $id "*) return 0 ;; esac
+  seen="$seen$id "
+  echo "$1"
 }
 
 # One line of cost: load, Spotlight (mds, mds_stores, mdworker*), FSEvents (fseventsd), agent CLIs.

@@ -3,7 +3,7 @@ name: mac-for-agents
 description: Measure what macOS file indexing (Spotlight and fseventsd) costs on a Mac where coding agents rewrite thousands of files, then guide the one supported setting that stops Spotlight indexing code folders, and measure again. Read-only, no sudo. Use when a Mac running Claude Code, Codex or other agents is slow, hot or loud, when mds_stores, mdworker or fseventsd top Activity Monitor, or to optimize a Mac for agents. Triggers on "Spotlight eats my CPU", "mds_stores", "mdworker", "fseventsd", "Mac slow with agents", "optimize my Mac for agents", "exclude node_modules from Spotlight", "stop Spotlight indexing my code".
 compatibility: macOS only (mdutil, mdfind, ps, sysctl, tmutil). Bash. Read-only; it changes nothing on its own. Works in Claude Code and any agent with Bash.
 homepage: local
-metadata: {"version":"1.0.0","updated":"2026-10-28","author":"gwendall"}
+metadata: {"version":"1.0.1","updated":"2026-10-28","author":"gwendall"}
 ---
 
 # mac-for-agents - what indexing costs while agents work

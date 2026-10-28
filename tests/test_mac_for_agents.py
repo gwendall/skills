@@ -50,6 +50,19 @@ class MacForAgentsTests(unittest.TestCase):
         self.assertIn(f"{tmp}: not indexed (good)", result.stdout)
         self.assertIn("== Cost right now", result.stdout)
 
+    @unittest.skipUnless(platform.system() == "Darwin", "Spotlight is macOS only")
+    def test_report_finds_the_default_folders_and_names_each_once(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            for name in ("code", "project", "repo"):
+                Path(tmp, name).mkdir()
+            env = {k: v for k, v in os.environ.items() if k != "CODE_DIRS"} | {"HOME": tmp}
+            result = run("report", env=env)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        listed = [line for line in result.stdout.splitlines() if line.startswith(f"  {tmp}/")]
+        names = sorted(line[len(f"  {tmp}/"):].split(":")[0].lower() for line in listed)
+        # A case-insensitive disk (the macOS default) answers ~/Code for ~/code: still one folder.
+        self.assertEqual(names, ["code", "project", "repo"], result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()
