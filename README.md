@@ -21,6 +21,12 @@ My agent skills for Claude Code, Codex and compatible runtimes, grouped by categ
 | [safe-memory-manager](skills/workstation/safe-memory-manager) | Diagnose RAM pressure on a dev Mac and find what can safely be stopped. |
 | [claude-token-spend](skills/workstation/claude-token-spend) | Report Claude Code token consumption from your local session logs. |
 
+### Operations
+
+| Skill | What it does |
+| --- | --- |
+| [project-watch](skills/operations/project-watch) | Check press, social conversations, authorized inboxes and analytics across projects, retain evidence, and prepare recurring briefings. |
+
 ### Lifestyle
 
 | Skill | What it does |

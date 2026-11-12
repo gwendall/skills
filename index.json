@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-14T16:05:02",
+  "generated": "2026-11-12T01:14:40",
   "baseUrl": "https://raw.githubusercontent.com/gwendall/skills/main",
-  "count": 9,
+  "count": 10,
   "skills": [
     {
       "name": "ci-cost-monorepo",
@@ -214,6 +214,38 @@
           "path": "skills/lifestyle/city-events/scripts/tentpoles.py",
           "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/lifestyle/city-events/scripts/tentpoles.py",
           "role": "script"
+        }
+      ]
+    },
+    {
+      "name": "project-watch",
+      "category": "operations",
+      "description": "Run an evidence-based watch across a project's press coverage, public social posts, comments and replies, authorized inboxes, and product analytics. Use for \"anything new?\", \"refais une veille\", \"nouveaux articles ou messages\", project monitoring, or preparing recurring project reports. Compare with the last successful check per source, retain evidence and exclusions, update existing relationship memory, and report only useful changes. Does not send replies or publish content.",
+      "version": "1.0.0",
+      "updated": "2026-11-12",
+      "compatibility": "Requires authorized source connectors or existing read-only collectors, plus durable private state. A scheduler is separate and must be available before recurring execution can be claimed.",
+      "requires": null,
+      "emoji": null,
+      "files": [
+        {
+          "path": "skills/operations/project-watch/SKILL.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/operations/project-watch/SKILL.md",
+          "role": "skill"
+        },
+        {
+          "path": "skills/operations/project-watch/references/profile.example.json",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/operations/project-watch/references/profile.example.json",
+          "role": "reference"
+        },
+        {
+          "path": "skills/operations/project-watch/references/report.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/operations/project-watch/references/report.md",
+          "role": "reference"
+        },
+        {
+          "path": "skills/operations/project-watch/references/scheduling.md",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/operations/project-watch/references/scheduling.md",
+          "role": "reference"
         }
       ]
     },
