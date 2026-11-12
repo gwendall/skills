@@ -2,13 +2,16 @@
 name: project-watch
 description: Run an evidence-based watch across a project's press coverage, public social posts, comments and replies, authorized inboxes, and product analytics. Use for "anything new?", "refais une veille", "nouveaux articles ou messages", project monitoring, or preparing recurring project reports. Compare with the last successful check per source, retain evidence and exclusions, update existing relationship memory, and report only useful changes. Does not send replies or publish content.
 compatibility: Requires authorized source connectors or existing read-only collectors, plus durable private state. A scheduler is separate and must be available before recurring execution can be claimed.
-metadata: {"version":"1.0.0","updated":"2026-11-12","author":"gwendall"}
+metadata: {"version":"1.0.1","updated":"2026-11-12","author":"gwendall"}
 ---
 
 # Project watch
 
 Turn repeated "anything new?" requests into a consistent, project-specific briefing.
 The skill defines the method. An existing scheduler defines when it runs.
+These are instructions for an agent, not software-enforced guarantees. Provider
+adapters, checkpoint storage and delivery must be verified separately before
+claiming unattended readiness. Use [acceptance.md](references/acceptance.md).
 
 ## Resolve the project
 
@@ -26,6 +29,16 @@ Read applicable project instructions and preserve existing curation and outbound
 restrictions. Reuse the project's canonical CRM, Library or equivalent memory.
 Do not introduce another contact database, notification service or daemon.
 
+A shared creator inbox can contain several projects and personal conversations.
+Account ownership does not establish a message's project. Attribute messages using
+the actual topic and thread evidence, not a signature link or the profile that
+happened to retrieve them. Keep uncertain items unassigned. Where authorized,
+reuse one retrieval across profiles without copying unrelated private context.
+
+A connection_ref is a label until resolved to a documented connector or callable
+adapter. Record unresolved bindings as unavailable. Never substitute a fresh
+handwritten collector and then describe the system as a ready generic runner.
+
 ## Establish a trustworthy baseline
 
 1. Find the latest completed observation for each source, query, object and metric.
@@ -39,8 +52,24 @@ Do not introduce another contact database, notification service or daemon.
 5. Resume interrupted work from saved evidence and cursors. Do not start a second
    copy of the same scheduled job. Use the scheduler's concurrency control when
    available; if overlapping runs cannot be prevented, report that limitation.
+6. Source checked_at comes from the remote retrieval, not later parsing or report
+   creation. Keep recorded_at separate. A local transformation does not make old
+   evidence fresh.
 
 ## Select the appropriate run
+
+Choose the mode from the owner's invocation before applying cadence:
+
+- **manual_refresh:** an explicit "check now", "anything new?" or manual run
+  refreshes enabled light sources even if recently checked. It does not enable
+  disabled sources, broaden authorization or force daily discovery.
+- **scheduled_due:** a recurring invocation collects only sources due by profile.
+- **discovery_refresh:** use when the owner explicitly requests fresh broad
+  discovery, within authorized scope and budgets.
+- **digest_only:** summarize durable observations without refreshing sources.
+
+If a manual request is genuinely ambiguous, state the chosen mode and proceed with
+manual_refresh. Do not call a not_due-only pass a successful collection test.
 
 - **Light check:** authorized incoming messages, new mentions, known content
   counters, new comments and analytics. Prefer APIs, webhooks and existing CLIs.
@@ -53,6 +82,12 @@ Do not introduce another contact database, notification service or daemon.
 The profile chooses channels and budgets. Do independent reads together, then
 follow dependent pagination and conversation expansion sequentially. Reuse existing
 collectors instead of writing a dated replacement script for every run.
+
+Keep pagination and request budgets distinct: max_pages_per_query bounds one
+paginated query, while max_requests_per_source bounds all requests for that source.
+When a budget is reached, retain both remaining cursors and unvisited queries or
+objects. Resume pending work before repeatedly refreshing the same first objects.
+An empty cursor does not mean a source is complete if queries remain unvisited.
 
 ## Read and qualify
 

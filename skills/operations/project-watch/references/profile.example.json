@@ -55,9 +55,12 @@
   ],
   "execution": {
     "scheduled_browser": false,
-    "max_pages_per_source": 5,
     "overlap_minutes": 60,
-    "preserve_partial_cursors": true
+    "preserve_partial_cursors": true,
+    "manual_mode": "manual_refresh",
+    "scheduled_mode": "scheduled_due",
+    "max_pages_per_query": 5,
+    "max_requests_per_source": 20
   },
   "reporting": {
     "language": "fr",
