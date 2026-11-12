@@ -2,7 +2,7 @@
 name: project-watch
 description: Run an evidence-based watch across a project's press coverage, public social posts, comments and replies, authorized inboxes, and product analytics. Use for "anything new?", "refais une veille", "nouveaux articles ou messages", project monitoring, or preparing recurring project reports. Compare with the last successful check per source, retain evidence and exclusions, update existing relationship memory, and report only useful changes. Does not send replies or publish content.
 compatibility: Requires authorized source connectors or existing read-only collectors, plus durable private state. A scheduler is separate and must be available before recurring execution can be claimed.
-metadata: {"version":"1.0.1","updated":"2026-11-12","author":"gwendall"}
+metadata: {"version":"1.1.0","updated":"2026-11-12","author":"gwendall"}
 ---
 
 # Project watch
@@ -38,6 +38,23 @@ reuse one retrieval across profiles without copying unrelated private context.
 A connection_ref is a label until resolved to a documented connector or callable
 adapter. Record unresolved bindings as unavailable. Never substitute a fresh
 handwritten collector and then describe the system as a ready generic runner.
+
+## Prefer an installed runtime
+
+When the private profile provides a trusted runtime.command and runtime.cwd, read
+that runtime's documented CLI contract and invoke it instead of assembling new
+collectors. Keep profile paths and credentials private. For a compatible existing
+CRM runtime, the operation is `python3 -m project_watch run --profile PROFILE
+--mode MODE`; `status` reads checkpoints and delivery state. Inspect its saved
+report and source limits before summarizing. A successful command does not imply
+complete platform coverage or successful assisted analysis.
+
+Queued API requests are distinct from executed runs. Reuse their idempotency key
+after uncertain submission and verify the resulting run and report. A local
+launchd job is a supported scheduler when explicitly authorized, installed from
+a stable release, visible by label and verified through an actual run. It still
+depends on the computer and user session being available. Do not register a second
+schedule when an existing task or OS job already owns the profile.
 
 ## Establish a trustworthy baseline
 

@@ -70,3 +70,14 @@ delivery destination. Record the first test run and known source gaps.
 If those capabilities are unavailable in the current session, leave activation
 pending and provide the exact prompt and cadence. Never claim automatic reports
 will arrive merely because a skill or profile was installed.
+
+
+## Owner-authorized OS scheduler
+
+An installed OS scheduler such as macOS launchd can own a finite local runtime
+when the owner explicitly requests automation and the existing tooling map has
+been checked. Use a stable release, one visible job label, concurrency exclusion,
+private logs, bounded children and a documented pause/re-enable path. Verify a run
+started by that scheduler and a durably delivered report. Notification submission
+alone does not establish visible delivery. An asleep/offline computer is an access
+condition, not a no-change result. Do not conceal the absence of cloud execution.

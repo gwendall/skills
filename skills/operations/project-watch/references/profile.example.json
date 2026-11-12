@@ -79,5 +79,14 @@
     "discovery_hours": 24,
     "digest_hours": 24,
     "delivery_verified": false
+  },
+  "runtime": {
+    "command": [
+      "python3",
+      "-m",
+      "project_watch"
+    ],
+    "cwd": "/private/path/existing-crm-runtime",
+    "documentation": "/private/path/existing-crm-runtime/docs/project-watch.md"
   }
 }
