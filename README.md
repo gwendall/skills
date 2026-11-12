@@ -22,6 +22,12 @@ My agent skills for Claude Code, Codex and compatible runtimes, grouped by categ
 | [claude-token-spend](skills/workstation/claude-token-spend) | Report Claude Code token consumption from your local session logs. |
 | [mac-for-agents](skills/workstation/mac-for-agents) | Measure what Spotlight and fseventsd cost while agents rewrite your code, guide the one setting that stops it, and measure again. |
 
+### Operations
+
+| Skill | What it does |
+| --- | --- |
+| [project-watch](skills/operations/project-watch) | Monitor press, social conversations, authorized inboxes and analytics with durable evidence and verified scheduling. |
+
 ### Lifestyle
 
 | Skill | What it does |

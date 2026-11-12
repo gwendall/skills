@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "project": {
+    "id": "example-project",
+    "name": "Example Project",
+    "aliases": [
+      "Example Project"
+    ],
+    "domains": [
+      "example.com"
+    ],
+    "languages": [
+      "en",
+      "fr"
+    ]
+  },
+  "memory": {
+    "kind": "existing_crm",
+    "connection_ref": "owner-private-memory",
+    "evidence_root": "/private/path/project-watch/example-project"
+  },
+  "sources": [
+    {
+      "id": "press",
+      "kind": "public_search",
+      "queries": [
+        "\"Example Project\"",
+        "\"example.com\""
+      ],
+      "cadence_hours": 24,
+      "enabled": true
+    },
+    {
+      "id": "social",
+      "kind": "public_social",
+      "connection_ref": "authorized-social-connection",
+      "known_content_ref": "canonical-memory",
+      "cadence_hours": 6,
+      "enabled": true
+    },
+    {
+      "id": "inbox",
+      "kind": "incoming_messages",
+      "connection_ref": "authorized-project-inbox",
+      "cadence_hours": 6,
+      "enabled": true
+    },
+    {
+      "id": "analytics",
+      "kind": "analytics",
+      "connection_ref": "authorized-project-analytics",
+      "cadence_hours": 6,
+      "enabled": true
+    }
+  ],
+  "execution": {
+    "scheduled_browser": false,
+    "overlap_minutes": 60,
+    "preserve_partial_cursors": true,
+    "manual_mode": "manual_refresh",
+    "scheduled_mode": "scheduled_due",
+    "max_pages_per_query": 5,
+    "max_requests_per_source": 20
+  },
+  "reporting": {
+    "language": "fr",
+    "timezone": "Europe/Paris",
+    "routine_delivery": "daily_digest",
+    "digest_local_time": "09:00",
+    "attention_delivery": "supported_existing_task_inbox",
+    "quiet_hours": [
+      "23:00",
+      "08:00"
+    ]
+  },
+  "schedule": {
+    "status": "proposed",
+    "light_check_hours": 6,
+    "discovery_hours": 24,
+    "digest_hours": 24,
+    "delivery_verified": false
+  },
+  "runtime": {
+    "command": [
+      "python3",
+      "-m",
+      "project_watch"
+    ],
+    "cwd": "/private/path/existing-crm-runtime",
+    "documentation": "/private/path/existing-crm-runtime/docs/project-watch.md"
+  }
+}
