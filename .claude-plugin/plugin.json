@@ -1,13 +1,32 @@
 {
   "name": "gwendall-skills",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Gwendall's agent skills, grouped by category: engineering (multi-agent repos, CI cost, EAS releases, OG images), workstation (disk, memory, token spend, indexing cost), lifestyle (city events) and writing (jokes).",
   "author": {
     "name": "Gwendall Esnault"
   },
   "repository": "https://github.com/gwendall/skills",
   "license": "MIT",
-  "keywords": ["skills", "agents", "engineering", "monorepo", "ci", "eas", "testflight", "og-image", "social-cards", "macos", "disk", "memory", "tokens", "spotlight", "events", "writing"],
+  "keywords": [
+    "skills",
+    "agents",
+    "engineering",
+    "monorepo",
+    "ci",
+    "eas",
+    "testflight",
+    "og-image",
+    "social-cards",
+    "macos",
+    "disk",
+    "memory",
+    "tokens",
+    "spotlight",
+    "events",
+    "writing",
+    "monitoring",
+    "project-watch"
+  ],
   "skills": [
     "./skills/engineering/multi-agent-repo",
     "./skills/engineering/ci-cost-monorepo",
@@ -18,6 +37,7 @@
     "./skills/workstation/claude-token-spend",
     "./skills/workstation/mac-for-agents",
     "./skills/lifestyle/city-events",
-    "./skills/writing/joke-writing"
+    "./skills/writing/joke-writing",
+    "./skills/operations/project-watch"
   ]
 }
