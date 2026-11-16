@@ -2,15 +2,32 @@
 import subprocess
 from contextlib import contextmanager
 from tempfile import TemporaryFile
+from pathlib import Path
 
 
 def transcripts(root):
-    """A restored plain log wins over its archive, including without message IDs."""
-    files = {str(p): p for p in root.rglob("*.jsonl") if p.is_file()}
+    """Return (original path, readable file), preferring native plain logs.
+
+    The central store mirrors canonical HOME-relative paths. Resolving the
+    requested root also handles ~/.claude/projects pointing into ~/.denshin.
+    """
+    root = Path(root)
+    home = Path.home().resolve()
+    store = home / ".local/state/machine/transcript-archive/store"
+    files = {p: p for p in root.rglob("*.jsonl") if p.is_file()}
     for archive in root.rglob("*.jsonl.zst"):
-        if archive.is_file():
-            files.setdefault(str(archive)[:-4], archive)
-    return [files[key] for key in sorted(files)]
+        if archive.is_file() and store not in archive.resolve().parents:
+            files.setdefault(Path(str(archive)[:-4]), archive)
+    try:
+        central = store / root.resolve().relative_to(home)
+    except ValueError:
+        central = None  # An unrelated --root never inherits this home's data.
+    if central is not None:
+        for archive in central.rglob("*.jsonl.zst"):
+            if archive.is_file():
+                original = root / str(archive.relative_to(central))[:-4]
+                files.setdefault(original, archive)
+    return [(original, files[original]) for original in sorted(files)]
 
 
 @contextmanager

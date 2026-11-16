@@ -3,7 +3,7 @@ name: claude-token-spend
 description: Report Claude Code token consumption from local session logs - per model, per project, and per token type (input, output, cache read, cache write) over 24h / 7d / 30d / all-time windows. Reads ~/.claude/projects directly, no API key, read-only. Triggers on "my token spend", "token consumption", "how many tokens did I use", "usage per model", "which project burns the most tokens", "ccdash-style report".
 compatibility: Requires python3 (stdlib only), zstd for compressed logs, and local Claude Code logs in ~/.claude/projects. Read-only. Works in Claude Code and any agent with Bash.
 homepage: local
-metadata: {"version":"1.1.0","updated":"2026-11-16","author":"gwendall","openclaw":{"requires":{"bins":["python3","zstd"]},"emoji":"abacus"}}
+metadata: {"version":"1.2.0","updated":"2026-11-16","author":"gwendall","openclaw":{"requires":{"bins":["python3","zstd"]},"emoji":"abacus"}}
 ---
 
 # claude-token-spend - Token consumption report from local logs
@@ -26,7 +26,11 @@ Options: `--root DIR` (default `~/.claude/projects`), `--top-projects N`.
 
 1. Scans every `*.jsonl` and `*.jsonl.zst` under the root. Archives stream through
    `zstd` without restoring files to disk. A plain file takes precedence over
-   its archive if both exist. Missing `zstd` or a corrupt archive stops the
+   its archive if both exist. Also reads matching archives from
+   `~/.local/state/machine/transcript-archive/store/`, where each path mirrors
+   the original transcript relative to the resolved home directory. Project
+   labels stay the same, and unrelated `--root` directories stay isolated.
+   Missing `zstd` or a corrupt archive stops the
    report rather than silently undercounting. Each assistant message in those session
    files carries a `message.usage` block with `input_tokens`, `output_tokens`,
    `cache_read_input_tokens`, `cache_creation_input_tokens`, plus `message.model`
