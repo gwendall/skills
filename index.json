@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T03:08:03",
+  "generated": "2026-11-16T02:10:43",
   "baseUrl": "https://raw.githubusercontent.com/gwendall/skills/main",
   "count": 11,
   "skills": [
@@ -258,12 +258,13 @@
       "name": "claude-token-spend",
       "category": "workstation",
       "description": "Report Claude Code token consumption from local session logs - per model, per project, and per token type (input, output, cache read, cache write) over 24h / 7d / 30d / all-time windows. Reads ~/.claude/projects directly, no API key, read-only. Triggers on \"my token spend\", \"token consumption\", \"how many tokens did I use\", \"usage per model\", \"which project burns the most tokens\", \"ccdash-style report\".",
-      "version": "1.0.0",
-      "updated": "2026-08-24",
-      "compatibility": "Requires python3 (stdlib only) and local Claude Code logs in ~/.claude/projects. Read-only. Works in Claude Code and any agent with Bash.",
+      "version": "1.1.0",
+      "updated": "2026-11-16",
+      "compatibility": "Requires python3 (stdlib only), zstd for compressed logs, and local Claude Code logs in ~/.claude/projects. Read-only. Works in Claude Code and any agent with Bash.",
       "requires": {
         "bins": [
-          "python3"
+          "python3",
+          "zstd"
         ]
       },
       "emoji": "abacus",
@@ -276,6 +277,11 @@
         {
           "path": "skills/workstation/claude-token-spend/scripts/token_spend.py",
           "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/claude-token-spend/scripts/token_spend.py",
+          "role": "script"
+        },
+        {
+          "path": "skills/workstation/claude-token-spend/scripts/transcript_files.py",
+          "url": "https://raw.githubusercontent.com/gwendall/skills/main/skills/workstation/claude-token-spend/scripts/transcript_files.py",
           "role": "script"
         }
       ]

@@ -1,0 +1,29 @@
+name: token-spend
+
+on:
+  pull_request:
+    paths:
+      - skills/workstation/claude-token-spend/**
+      - tests/test_claude_token_spend.py
+      - .github/workflows/token-spend.yml
+  push:
+    branches: [main]
+    paths:
+      - skills/workstation/claude-token-spend/**
+      - tests/test_claude_token_spend.py
+      - .github/workflows/token-spend.yml
+
+permissions:
+  contents: read
+
+jobs:
+  archives:
+    name: Transcript archive compatibility
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install archive reader when absent
+        run: command -v zstd || (sudo apt-get update && sudo apt-get install -y zstd)
+      - name: Compare plain and compressed usage, corruption and process cleanup
+        run: python3 -m unittest discover -s tests -p test_claude_token_spend.py -v

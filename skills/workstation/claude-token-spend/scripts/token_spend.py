@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Aggregate Claude Code token consumption from local session logs.
 
-Reads every *.jsonl under ~/.claude/projects (or --root), deduplicates
+Reads every *.jsonl and *.jsonl.zst under ~/.claude/projects (or --root), deduplicates
 messages that are repeated across resumed/forked sessions, and reports
 token usage per model over 24h / 7d / 30d / all-time windows, plus a
 breakdown by token type and by project.
 
-No dependencies beyond the Python 3 standard library. Read-only.
+Uses the Python standard library and zstd for archives. Read-only.
 """
 import argparse
 import json
@@ -14,6 +14,8 @@ import sys
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+from transcript_files import open_transcript, transcripts
 
 TOKEN_KEYS = ("input", "output", "cache_read", "cache_create")
 WINDOWS = ("24h", "7d", "30d", "all")
@@ -49,13 +51,9 @@ def scan(root):
     seen = set()
     counted = dupes = 0
 
-    for path in sorted(root.rglob("*.jsonl")):
+    for path in transcripts(root):
         project = path.relative_to(root).parts[0] if path.parent != root else "(root)"
-        try:
-            fh = open(path, encoding="utf-8", errors="replace")
-        except OSError:
-            continue
-        with fh:
+        with open_transcript(path) as fh:
             for line in fh:
                 # Cheap pre-filter: only assistant messages carry usage.
                 if '"usage"' not in line:
