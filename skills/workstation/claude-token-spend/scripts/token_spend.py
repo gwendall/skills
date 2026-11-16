@@ -51,8 +51,8 @@ def scan(root):
     seen = set()
     counted = dupes = 0
 
-    for path in transcripts(root):
-        project = path.relative_to(root).parts[0] if path.parent != root else "(root)"
+    for original, path in transcripts(root):
+        project = original.relative_to(root).parts[0] if original.parent != root else "(root)"
         with open_transcript(path) as fh:
             for line in fh:
                 # Cheap pre-filter: only assistant messages carry usage.
@@ -137,7 +137,7 @@ def main():
     )
     args = ap.parse_args()
 
-    if not args.root.is_dir():
+    if not args.root.is_dir() and not transcripts(args.root):
         sys.exit(f"log directory not found: {args.root}")
 
     by_model, by_project, counted, dupes = scan(args.root)
